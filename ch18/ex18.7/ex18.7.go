@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	array := []int{1, 2, 3, 4, 5}
+	array := [5]int{1, 2, 3, 4, 5}
 	slice2 := array[1:2]
 
 	fmt.Println("array: ", array)
