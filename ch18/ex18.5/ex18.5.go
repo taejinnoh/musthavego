@@ -18,5 +18,4 @@ func main() {
 	fmt.Println("After append 500")
 	fmt.Println("slice1: ", slice1, len(slice1), cap(slice1))
 	fmt.Println("slice2: ", slice2, len(slice2), cap(slice2))
-
 }
