@@ -33,4 +33,5 @@ func main() {
 	}
 	quit <- true
 	wg.Wait()
+	
 }
