@@ -11,10 +11,10 @@ var wg sync.WaitGroup
 
 func main() {
 	wg.Add(1)
-	ctx, cancel := context.WithCancel(context.Background()) // 컨텍스트 생성
+	ctx, _ := context.WithTimeout(context.Background(), 3*time.Second) // 컨텍스트 생성
 	go PrintEverySecond(ctx)
-	time.Sleep(5 * time.Second)
-	cancel() // 취소
+	//time.Sleep(5 * time.Second)
+	//cancel() // 취소
 
 	wg.Wait()
 }
