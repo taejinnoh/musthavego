@@ -73,3 +73,25 @@ func TestJsonHandler3(t *testing.T) {
 	assert.Nil(err)
 	assert.Equal("ccc", student.Name)
 }
+
+func TestJsonHandler4(t *testing.T) {
+	assert := assert.New(t)
+
+	mux := MakeWebHandler()
+	res := httptest.NewRecorder()
+	req := httptest.NewRequest("DELETE", "/students/1", nil)
+	mux.ServeHTTP(res, req)
+	assert.Equal(http.StatusOK, res.Code)
+
+	// 삭제 후 students 확인
+	res = httptest.NewRecorder()
+	req = httptest.NewRequest("GET", "/students", nil)
+	mux.ServeHTTP(res, req)
+	assert.Equal(http.StatusOK, res.Code)
+
+	var list []Student
+	err := json.NewDecoder(res.Body).Decode(&list)
+	assert.Nil(err)
+	assert.Equal(1, len(list))
+	assert.Equal("bbb", list[0].Name)
+}
